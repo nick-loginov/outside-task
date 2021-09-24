@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "2cb7d520-9046-494b-b0d9-95db72eb4aaf",
 		"name": "Outside-Task",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -22,7 +22,19 @@
 										"type": "text"
 									}
 								],
-								"url": "http://localhost:3000/user/tag/my"
+								"url": {
+									"raw": "http://localhost:3000/user/tag/my",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"tag",
+										"my"
+									]
+								}
 							},
 							"response": []
 						},
@@ -69,7 +81,18 @@
 										"type": "text"
 									}
 								],
-								"url": "http://localhost:3000/tag/2"
+								"url": {
+									"raw": "http://localhost:3000/tag/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"tag",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -93,7 +116,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/user/tag"
+								"url": {
+									"raw": "http://localhost:3000/user/tag",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"tag"
+									]
+								}
 							},
 							"response": []
 						}
@@ -113,7 +147,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/signup"
+						"url": {
+							"raw": "http://localhost:3000/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"signup"
+							]
+						}
 					},
 					"response": []
 				},
@@ -159,7 +203,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3000/login"
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -181,7 +235,17 @@
 							"mode": "raw",
 							"raw": "{\r\n    \"email\": \"kemphack@mail.ru\",\r\n    \"password\": \"123456\",\r\n}"
 						},
-						"url": "http://localhost:3000/user"
+						"url": {
+							"raw": "http://localhost:3000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						}
 					},
 					"response": []
 				},
@@ -200,7 +264,17 @@
 							"mode": "raw",
 							"raw": "{\r\n    \"email\": \"kemphack@mail.ru\",\r\n    \"password\": \"123456\",\r\n}"
 						},
-						"url": "http://localhost:3000/user"
+						"url": {
+							"raw": "http://localhost:3000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						}
 					},
 					"response": []
 				},
@@ -215,7 +289,17 @@
 								"type": "text"
 							}
 						],
-						"url": "http://localhost:3000/user"
+						"url": {
+							"raw": "http://localhost:3000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						}
 					},
 					"response": []
 				}
@@ -246,7 +330,17 @@
 								"type": "text"
 							}
 						],
-						"url": "localhost:3000/tag/2"
+						"url": {
+							"raw": "localhost:3000/tag/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tag",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
@@ -302,14 +396,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"jopa foxika\",\r\n    \"sortOrder\": 0\r\n}",
+							"raw": "{\r\n    \"name\": \"foxik\",\r\n    \"sortOrder\": 0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:3000/tag/11"
+						"url": {
+							"raw": "localhost:3000/tag/11",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tag",
+								"11"
+							]
+						}
 					},
 					"response": []
 				},
@@ -326,14 +430,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"jopa jopa 5\",\r\n    \"sortOrder\": 0\r\n}",
+							"raw": "{\r\n    \"name\":\"made out of steel\",\r\n    \"sortOrder\": 0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3000/tag"
+						"url": {
+							"raw": "http://localhost:3000/tag",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tag"
+							]
+						}
 					},
 					"response": []
 				}
