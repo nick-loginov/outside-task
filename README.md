@@ -4,4 +4,5 @@
 2) npm install
 3) psql -u User -f ./sql-helpers/dropall.sql (пока без миграций)
 4) npm start или npm run dev
+
 К сожалению докер пока не успел настроить D:
