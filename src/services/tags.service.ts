@@ -57,7 +57,7 @@ class TagsService {
     return tags.map(this.mapTagToSafe);
   }
 
-  public async getByUserPaginate(uid: string, options: GetTagsPaginateDto) {
+  public async getPaginate(options: GetTagsPaginateDto) {
     const sortColumns: (keyof TagDatabase)[] = [];
     if (options.sortNames !== undefined) {
       sortColumns.push('tag_name');
@@ -65,8 +65,8 @@ class TagsService {
     if (options.sortOrder !== undefined) {
       sortColumns.push('tag_sort_order');
     }
-    const [unsafeTags, quantity] = await TagsModel.getByUserPaginate(uid, sortColumns, options.offset, options.length);
-    return [unsafeTags.map(this.mapTagToSafe.bind(this)), quantity];
+    const [unsafeTagsWithUser, quantity] = await TagsModel.getPaginate(sortColumns, options.offset, options.length);
+    return [unsafeTagsWithUser.map(this.mapTagToSafe.bind(this)), quantity];
   }
 
   public async putTag(uid: string, tagId: number, dto: CreateTagDto) {

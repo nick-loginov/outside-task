@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2cb7d520-9046-494b-b0d9-95db72eb4aaf",
+		"_postman_id": "50738a27-b9d2-4033-9ef0-1bad08ee2bba",
 		"name": "Outside-Task",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 					"name": "Tag",
 					"item": [
 						{
-							"name": "My",
+							"name": "Get Tags Created By User",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -39,7 +39,7 @@
 							"response": []
 						},
 						{
-							"name": "My Copy",
+							"name": "Get User Tags",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -82,7 +82,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/tag/2",
+									"raw": "http://localhost:3000/tag/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -90,7 +90,7 @@
 									"port": "3000",
 									"path": [
 										"tag",
-										"2"
+										"1"
 									]
 								}
 							},
@@ -109,7 +109,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"tags\": [1,2,3]\r\n}",
+									"raw": "{\r\n    \"tags\": [1]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -132,90 +132,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "Sign Up",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"whatever@mail.ru\",\r\n    \"password\": \"123456\",\r\n    \"nickname\": \"new_nickname\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/signup",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Sign In",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const jsonResponse = pm.response.json();\r",
-									"pm.environment.set(\"Authorization\", \"Bearer \" + jsonResponse.data.token) "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{Authorization}}",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"whatever@mail.ru\",\r\n    \"password\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
 				},
 				{
 					"name": "Get User",
@@ -262,7 +178,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"kemphack@mail.ru\",\r\n    \"password\": \"123456\",\r\n}"
+							"raw": "{\r\n    \"email\": \"whatever@mail.ru\",\r\n    \"password\": \"123456\",\r\n    \"nickname\": \"new_nickname_2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "http://localhost:3000/user",
@@ -331,14 +252,14 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/tag/2",
+							"raw": "localhost:3000/tag/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"tag",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -356,7 +277,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/tag/?offset=0&sortOrder&sortNames",
+							"raw": "localhost:3000/tag/?offset=0&sortOrder",
 							"host": [
 								"localhost"
 							],
@@ -372,10 +293,6 @@
 								},
 								{
 									"key": "sortOrder",
-									"value": null
-								},
-								{
-									"key": "sortNames",
 									"value": null
 								}
 							]
@@ -430,7 +347,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"made out of steel\",\r\n    \"sortOrder\": 0\r\n}",
+							"raw": "{\r\n    \"name\":\"made out of steel\",\r\n    \"sortOrder\": 7\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -446,6 +363,120 @@
 							"port": "3000",
 							"path": [
 								"tag"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"whatever@mail.ru\",\r\n    \"password\": \"123456\",\r\n    \"nickname\": \"new_nickname\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();\r",
+									"pm.globals.set(\"Authorization\", \"Bearer \" + jsonResponse.data.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"whatever@mail.ru\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/refresh_token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refresh_token"
 							]
 						}
 					},

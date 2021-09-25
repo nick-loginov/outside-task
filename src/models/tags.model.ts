@@ -103,7 +103,22 @@ export class TagsModel {
     const query = `SELECT * FROM user_tag JOIN tags ON ut_tag_id = tag_id WHERE ut_user_uid = $1 ${order} offset ${offset} LIMIT ${limit}`;
     let queryResult = await DatabaseService.query(query, [uid]);
 
-    const tagsWithUser = queryResult.rows.map(this.getTagFromRow);
+    const tags = queryResult.rows.map(this.getTagFromRow);
+    queryResult = await DatabaseService.query('SELECT COUNT(*) FROM tags');
+    const quantity = parseInt(queryResult.rows[0].count);
+
+    return [tags, quantity];
+  }
+
+  public static async getPaginate(orderColumns: (keyof TagDatabase)[], offset: number, limit: number): Promise<[TagWithUser[], number]> {
+    let order = '';
+    if (orderColumns.length > 0) {
+      order = 'ORDER BY ' + orderColumns.join(', ');
+    }
+    const query = `SELECT * FROM tags JOIN users ON tag_creator = user_uid ${order} offset ${offset} LIMIT ${limit}`;
+    let queryResult = await DatabaseService.query(query);
+
+    const tagsWithUser = queryResult.rows.map(this.getTagWithUserFromRow);
     queryResult = await DatabaseService.query('SELECT COUNT(*) FROM tags');
     const quantity = parseInt(queryResult.rows[0].count);
 

@@ -50,7 +50,7 @@ class TagsController {
         ...dto,
         length: dto.length || DEFAULT_LENGTH_VALUE,
       };
-      const [tagsWithUser, quantity] = await this.tagsService.getByUserPaginate(req.user.uid, options);
+      const [tagsWithUser, quantity] = await this.tagsService.getPaginate(options);
       res.status(200).json({
         data: tagsWithUser,
         meta: {
