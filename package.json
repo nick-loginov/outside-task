@@ -1,8 +1,8 @@
 {
   "name": "outside-task",
   "version": "0.0.0",
-  "description": "TypeScript + Express API Server",
-  "author": "",
+  "description": "Task for OUTSIDE DIGITAL GROUP. For more information check TASK.md.",
+  "author": "kemphack",
   "license": "ISC",
   "scripts": {
     "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",

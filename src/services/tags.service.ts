@@ -1,10 +1,9 @@
 import { CreateTagDto, GetTagsPaginateDto } from '@dtos/tags.dto';
 import { TagDatabase, TagsModel } from '@models/tags.model';
-import { GetTagsPaginateOptions, SafeTag, SafeTagWithUser, Tag, TagWithUser } from '@interfaces/tags.interface';
+import { SafeTag, SafeTagWithUser, Tag, TagWithUser } from '@interfaces/tags.interface';
 import UsersService from '@services/users.service';
 import { isEmpty } from '@utils/util';
 import { HttpException } from '@exceptions/HttpException';
-import { type } from 'os';
 import { User } from '@interfaces/users.interface';
 
 class TagsService {

@@ -4,10 +4,10 @@ import jwt from 'jsonwebtoken';
 import { CreateUserDto, LoginUserDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
 import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
-import { SafeUser, User } from '@interfaces/users.interface';
 import { isEmpty } from '@utils/util';
 import { v4 as uuidv4 } from 'uuid';
 import { UsersModel } from '@/models/users.model';
+import { User } from '@interfaces/users.interface';
 
 class AuthService {
   private static _instance: AuthService;
@@ -50,9 +50,8 @@ class AuthService {
     if (!isPasswordMatching) throw new HttpException(409, "You're password not matching");
 
     const tokenData = this.createToken(findUser);
-    const cookie = this.createCookie(tokenData);
 
-    return { token: tokenData.token, expire: tokenData.expiresIn };
+    return { token: tokenData.token, expire: tokenData.expires };
   }
 
   public async logout(user: User): Promise<User> {
@@ -65,13 +64,9 @@ class AuthService {
   public createToken(user: User): TokenData {
     const dataStoredInToken: DataStoredInToken = { uid: user.uid };
     const secretKey: string = config.get('secretKey');
-    const expiresIn: number = 60 * 60;
+    const expires: number = 30 * 60;
 
-    return { expiresIn, token: jwt.sign(dataStoredInToken, secretKey, { expiresIn }) };
-  }
-
-  public createCookie(tokenData: TokenData): string {
-    return `Authorization=${tokenData.token}; HttpOnly; Max-Age=${tokenData.expiresIn};`;
+    return { expires, token: jwt.sign(dataStoredInToken, secretKey, { expiresIn: expires }) };
   }
 }
 

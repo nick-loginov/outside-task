@@ -1,15 +1,9 @@
-import bcrypt from 'bcrypt';
-import { CreateUserDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
-import { SafeUser, User, UserWithTags } from '@interfaces/users.interface';
-import { isEmpty } from '@utils/util';
-import { UsersModel } from '@/models/users.model';
 import { AddTagsDto } from '@dtos/users.tags.dto';
 import { UserTagModel } from '@models/user-tag.model';
 import { GetTagsPaginateDto } from '@dtos/tags.dto';
 import { TagDatabase, TagsModel } from '@models/tags.model';
 import TagsService from '@services/tags.service';
-import { SafeTag, SafeTagWithUser } from '@interfaces/tags.interface';
 
 class UsersTagsService {
   private static _instance: UsersTagsService;
@@ -41,7 +35,7 @@ class UsersTagsService {
     const addTagsResult = await UserTagModel.addTagsToUser(uid, dto.tags);
     if (addTagsResult == null) throw new HttpException(400, 'Wrong tag ids');
 
-    const [userTags, _] = await TagsModel.getByUserPaginate(uid, [], 0, 100);
+    const [userTags] = await TagsModel.getByUserPaginate(uid, [], 0, 100);
     return userTags.map(this.tagService.mapTagToSafe.bind(this.tagService));
   }
 }
