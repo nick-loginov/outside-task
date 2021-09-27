@@ -1,10 +1,11 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsString, Matches, MinLength } from 'class-validator';
+import { IsPassword } from '@dtos/my-validators/password.validator';
 
 export class CreateUserDto {
   @IsEmail()
   public email: string;
 
-  @IsString()
+  @IsPassword()
   public password: string;
 
   @IsString()
